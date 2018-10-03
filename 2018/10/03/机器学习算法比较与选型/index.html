@@ -1,0 +1,924 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Courier New:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="SKlearn," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Sun Zhu Li's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="概念均方差 MSE mean square error平均绝对差 MAE mean absolute error交叉损失熵 cross entropy
+独热编码one-hotpandas，默认对所有字符串类型进行独热编码one_hot_df = pd.get_dummies(data=df, columns=[‘embarked’])
+kerasfrom tensorflow.python.ker">
+<meta property="og:type" content="article">
+<meta property="og:title" content="机器学习算法比较与选型">
+<meta property="og:url" content="https://zlsunsuda.github.io/2018/10/03/机器学习算法比较与选型/index.html">
+<meta property="og:site_name" content="Sun Zhu Li's Blog">
+<meta property="og:description" content="概念均方差 MSE mean square error平均绝对差 MAE mean absolute error交叉损失熵 cross entropy
+独热编码one-hotpandas，默认对所有字符串类型进行独热编码one_hot_df = pd.get_dummies(data=df, columns=[‘embarked’])
+kerasfrom tensorflow.python.ker">
+<meta property="og:updated_time" content="2018-10-03T03:04:16.338Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="机器学习算法比较与选型">
+<meta name="twitter:description" content="概念均方差 MSE mean square error平均绝对差 MAE mean absolute error交叉损失熵 cross entropy
+独热编码one-hotpandas，默认对所有字符串类型进行独热编码one_hot_df = pd.get_dummies(data=df, columns=[‘embarked’])
+kerasfrom tensorflow.python.ker">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"hide"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: undefined,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="https://zlsunsuda.github.io/2018/10/03/机器学习算法比较与选型/"/>
+
+
+<!-- 网页加载条 -->
+<script src="/js/src/pace.min.js"></script>
+  <title> 机器学习算法比较与选型 | Sun Zhu Li's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Sun Zhu Li's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">Hello World</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search fa-lg"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                机器学习算法比较与选型
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-10-03T10:52:20+08:00" content="2018-10-03">
+              2018-10-03
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Machine-Learning/" itemprop="url" rel="index">
+                    <span itemprop="name">Machine Learning</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>均方差 MSE mean square error<br>平均绝对差 MAE mean absolute error<br>交叉损失熵 cross entropy</p>
+<h2 id="独热编码one-hot"><a href="#独热编码one-hot" class="headerlink" title="独热编码one-hot"></a>独热编码one-hot</h2><p>pandas，默认对所有字符串类型进行独热编码<br>one_hot_df = pd.get_dummies(data=df, columns=[‘embarked’])</p>
+<p>keras<br>from tensorflow.python.keras.utils import np_utils<br>传入一个list，如y_train=[5 0]。<br>to_categorical将label变成one_hot。如果label为字符串，需要先通过map进行映射。<br>y_train_onehot = np_utils.to_categorical(y_train)</p>
+<p>Tokenizer中已经封装了one_hot<br>from tensorflow.python.keras.preprocessing.text import Tokenizer<br>token = Tokenizer(num_words=2000)<br>token.fit_on_texts(X_train)<br>text_seq = token.texts_to_sequences(text)</p>
+<p>sklearn<br>如果将一个特征进行独热编码如何做？<br>[[1], [2], [3]]为3个样本，每个样本有1个特征</p>
+<pre><code>from sklearn.preprocessing import OneHotEncoder
+
+enc = OneHotEncoder()
+fit_result = enc.fit_transform([[1], [2], [3]]).toarray()
+print(fit_result)
+print(&quot;-------------------&quot;)
+test_onehot = enc.transform([[1]]).toarray()
+print(test_onehot)
+
+output: 需要对结果toarray()操作，否则结果看不懂
+[[1. 0. 0.]
+[0. 1. 0.]
+[0. 0. 1.]]
+-------------------
+[[1. 0. 0.]]
+</code></pre><h2 id="有监督学习算法比较"><a href="#有监督学习算法比较" class="headerlink" title="有监督学习算法比较"></a>有监督学习算法比较</h2><p>欠拟合：训练集和测试集性能接近<br>过拟合：训练集远远高于测试集性能</p>
+<p>C, gamma越小对应越简单模型，泛化能力更强。<br>alpha越大对应越简单模型，泛化能力更强。</p>
+<p>knn<br>调节：n_neighbors<br>优点：模型很容易解释。<br>缺点：<br>局限：仅适用于小数据集。<br>建议：预处理数据（将特征缩放到同一范围）能提高准确率。</p>
+<p>线性模型<br>调节alpha或者C<br>优点：对维度非常高的稀疏数据（如文本数据）表现好。训练和预测速度快。适用于非常大的数据集。<br>缺点：泛化能力较差。</p>
+<p>朴素贝叶斯模型<br>调节alpha<br>优点：对维度非常高的稀疏数据（如文本数据）表现好。训练和预测速度快。适用于非常大的数据集。<br>缺点：泛化能力比线性分类器较差。<br>局限：仅适用于分类。</p>
+<p>决策树<br>调节 max_features, max_depth<br>优点：不需要对特征进行预处理（如放缩），不需要反复调节参数<br>缺点：容易过拟合，泛化能力差。数模型不能在训练数据范围之外进行预测。</p>
+<p>random forest<br>调节n_estimators, max_features, max_depth<br>优点：不需要对特征进行预处理（如放缩），不需要反复调节参数。算法鲁棒性好。<br>缺点：对维度非常高的稀疏数据（如文本数据）表现不好。需要更大内存，训练和预测速度较慢。</p>
+<p>梯度提升树<br>调节n_estimators, learning_rate。learning_rate控制每棵树对前一棵树错误的纠正强度。<br>优点：不需要对特征进行预处理（如放缩），预测时间比random forest较短，精度比random forest高。<br>缺点：对维度非常高的稀疏数据（如文本数据）表现不好。训练速度较慢。需要仔细调参，算法鲁棒性差。<br>建议：先尝试random forest，再尝试梯度提升树</p>
+<p>svm<br>调节 核类型，gamma（等于核宽度的倒数）,C。gamma/C越大对应越复杂的模型。<br>优点：适用于低维/高维数据。决策边界可以为非线性。<br>缺点：预处理数据（需要将特征缩放到同一范围）与调参都需要非常小心（对参数设置非常敏感）。模型很难检查，很难被解释。对大数据集，运行时间较长且内存需求大。</p>
+<p>MLP<br>调节 hidden_layer_sizes(隐含层个数，以及每个层中单元个数（一般接近于输入特征个数）)， activation（激活函数，默认为relu），solver（优化方法，默认为adam）, alpha(正则化强度)。<br>优点：在足够计算时间和数据情况下，性能更优秀。<br>缺点：预处理数据（需要将特征缩放到同一范围，均值为0， 方差为1）与调参都需要非常小心。模型很难检查，很难被解释。训练时间很长。<br>建议：adam对数据缩放相当敏感，lbfgs算法鲁棒性好。调参步骤：(1) 创建过拟合网络;(2) 缩小网络;(3)增加正则项去提高泛化能力。</p>
+<h2 id="分类器的不确定度估计"><a href="#分类器的不确定度估计" class="headerlink" title="分类器的不确定度估计"></a>分类器的不确定度估计</h2><p>二分类<br>多分类<br>decision_function 输出为得分<br>predict_proba 输出为概率</p>
+<h2 id="无监督学习算法比较"><a href="#无监督学习算法比较" class="headerlink" title="无监督学习算法比较"></a>无监督学习算法比较</h2><p>应用算法之前，都执行数据缩放处理。<br>kmeans<br>调节 n_clusters。<br>优点：适用于大数据集。速度较快。<br>缺点：需要给定聚类个数；k均值仅能找到相对简单的形状。依赖于初始化。<br>应用：矢量化，用簇中心来表示每个数据点。类比于pca</p>
+<p>凝聚聚类<br>调节 n_clusters。<br>优点：适用于大数据集。速度较快。<br>缺点：需要给定聚类个数；仅能找到相对简单的形状。不能对新数据做出预测。<br>应用：找出簇中心个数</p>
+<p>DBSCAN 带噪声的基于密度的空间聚类应用<br>调节 eps(定义了点与点之间接近的含义)，min_samples。<br>优点：适用于较大数据集。不需要给定聚类个数；能找到相对复杂的形状。<br>缺点：不能对新数据做出预测。速度较慢。<br>不确定性：有时会生成大小差别很大的簇。</p>
+<p>###聚类算法评估<br>调整rand指数<br>归一化互信息<br>轮廓系数（在实践中效果不佳）<br>基于鲁棒性的聚类指标（sklearn暂未实现）</p>
+<h2 id="数据预处理"><a href="#数据预处理" class="headerlink" title="数据预处理"></a>数据预处理</h2><p>(1) fit, transform用fit_transform代替<br>对训练数据与测试数据执行相同的尺度变化操作<br>(2) 数据偏斜问题（分布不均匀）</p>
+<p>pca<br>调节 n_components, whiten (pca白化，将主成分缩放到相同尺度，包括缩放数据和旋转数据)<br>应用：降维。寻找数据中方差最大的方向。<br>缺点：不容易解释降维结果</p>
+<p>应用：特征提取（如提取人脸特征）</p>
+<p>nmf （非负矩阵分解）<br>不对数据进行重建或编码，在数据中寻找有趣模式。比PCA获取的成分更容易解释。</p>
+<p>流行学习算法<br>t-SNE，用于数据可视化</p>
+<h2 id="特征工程"><a href="#特征工程" class="headerlink" title="特征工程"></a>特征工程</h2><p>一般特征满足高斯分布时模型会获取到更好性能<br>特征分箱，将连续特征拆分为多个离散特征，一般对单一特征做分箱，提供线性模型性能。<br>one-hot编码</p>
+<p>特征提取</p>
+<p>特征选择<br>去除噪声特征便于构建模型。特征选择与PCA区别？<br>SelectKBest<br>SelectPercentile<br>SelectFromModel<br>RFE，recursive feature elimination，递归特征删除</p>
+<p>多项式特征(x<em>x, x</em>x<em>x), preprocessing.PolynomialFeatures<br>交互项特征 (x1 </em> x2)</p>
+<h2 id="模型验证"><a href="#模型验证" class="headerlink" title="模型验证"></a>模型验证</h2><p>评价泛化能力<br>train_test_split</p>
+<p>k折交叉验证<br>调节 cv，用于指定分类器<br>cross_val_score<br>优点：比更train_test_split准确。<br>缺点：增加了计算成本。<br>应用：用于回归</p>
+<p>分层k折交叉验证<br>避免某一个类别的数据都集中在某一个折中。导入sklearn.model_selection.StratifiedKFold<br>优点：比更train_test_split准确。<br>缺点：增加了计算成本。<br>应用：用于分类</p>
+<p>打乱交叉验证<br>sklearn.model_selection.ShuffleSplit</p>
+<p>分组交叉验证<br>比如将同一个人的数据放在一组<br>sklearn.model_selection.GroupKFold</p>
+<h2 id="模型调参"><a href="#模型调参" class="headerlink" title="模型调参"></a>模型调参</h2><p>样本分成3部分：训练集，验证集，测试集<br>带交叉验证的网格搜索, sklearn.model_selection.GridSearchCV<br>GridSearchCV不仅能搜索最佳参数，而且能拟合出一个性能更优秀的模型</p>
+<h2 id="评估模型"><a href="#评估模型" class="headerlink" title="评估模型"></a>评估模型</h2><h3 id="评估分类模型"><a href="#评估分类模型" class="headerlink" title="评估分类模型"></a>评估分类模型</h3><p>准确率<br>召回率<br>f1分数</p>
+<p>混淆矩阵<br>对二分类问题最全面的表示，输出对整个样本预测结果。主对角线上元素对应正确的分类。</p>
+<p>sklearn.metrics.confusion_matrix<br>输出为一个2*2矩阵，分别对应预测为TN(true negtive), FP, FN, TP（true positive）个数。</p>
+<p>ROC receiver operating characteristics curve， 受试者工作特征曲线<br>AUC area under curve，为ROC曲线下面积<br>sklearn.metrics.roc_curve<br>sklearn.metrics.roc_auc_score<br>对分布不平衡数据进行分类，推荐用AUC。取值[0,1],越大值说明性能更好。</p>
+<p>准确率-召回率曲线<br>sklearn.metrics.average_precision_score</p>
+<h3 id="评估回归模型"><a href="#评估回归模型" class="headerlink" title="评估回归模型"></a>评估回归模型</h3><p>sklearn.metrics.r2_score<br>sklearn.metrics.mean_squared_error<br>sklearn.metrics.mean_absolute_error</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/SKlearn/" rel="tag"><i class="fa fa-tag"></i> SKlearn</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/03/MongoDB慢查询分析/" rel="next" title="MongoDB慢查询分析">
+                <i class="fa fa-chevron-left"></i> MongoDB慢查询分析
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/10/03/spark java 实践/" rel="prev" title="Spark in Java">
+                Spark in Java <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/avatar/avatar.png"
+               alt="Sun Zhu Li" />
+          <p class="site-author-name" itemprop="name">Sun Zhu Li</p>
+          <p class="site-description motion-element" itemprop="description">Stay Hungry,Stay Foolish</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">10</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/zlsunsuda" target="_blank" title="Github">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  Github
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.csdn.net/learn_sunzhuli" title="CSDN" target="_blank">CSDN</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://zlsunsuda.github.io/zlsunsuda" title="个人首页" target="_blank">个人首页</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概念"><span class="nav-number">1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#独热编码one-hot"><span class="nav-number">2.</span> <span class="nav-text">独热编码one-hot</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#有监督学习算法比较"><span class="nav-number">3.</span> <span class="nav-text">有监督学习算法比较</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分类器的不确定度估计"><span class="nav-number">4.</span> <span class="nav-text">分类器的不确定度估计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#无监督学习算法比较"><span class="nav-number">5.</span> <span class="nav-text">无监督学习算法比较</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据预处理"><span class="nav-number">6.</span> <span class="nav-text">数据预处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#特征工程"><span class="nav-number">7.</span> <span class="nav-text">特征工程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模型验证"><span class="nav-number">8.</span> <span class="nav-text">模型验证</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模型调参"><span class="nav-number">9.</span> <span class="nav-text">模型调参</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#评估模型"><span class="nav-number">10.</span> <span class="nav-text">评估模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#评估分类模型"><span class="nav-number">10.1.</span> <span class="nav-text">评估分类模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#评估回归模型"><span class="nav-number">10.2.</span> <span class="nav-text">评估回归模型</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+      <!-- hack一个虚线出来 -->
+      <section style="border-top:1px dotted #ccc;height:10px;"></section>
+      <!-- weibo show -->
+      <iframe width="100%" height="120" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=120&fansRow=2&ptype=1&speed=0&skin=5&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=5346488237&verifier=d529ff3a&dpc=1"></iframe>
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+
+  
+  
+</div>
+
+
+
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Sun Zhu Li</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io" rel="external nofollow">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next" rel="external nofollow">
+    NexT.Pisces
+  </a>
+</div>
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count" style="color: #e90f92;">全站共 20k 字</span>
+</div>
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+
+  <!-- 按需加载背景 -->
+  <!--  -->
+  <!-- 页面点击小红心 -->
+  <!-- <!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/love.js?v=5.0.1"></script> -->
+  <!-- 页面移动stars -->
+  <!-- <!-- 鼠标移动特效 -->
+<script type="text/javascript" src="/js/src/jquery-stars.js?v=5.0.1"></script>
+<script type="text/javascript">
+jQuery('body').jstars({
+	image_path: '/images',
+	image: 'candy-cane-stars.png',
+	style: 'white',
+	width: 34,
+	height: 34,
+	delay: 700,
+	frequency: 5
+});
+</script> -->
+  <!-- <!-- 页面 title 进入/离开 效果 -->
+<script type="text/javascript">var OriginTitile=document.title,st;document.addEventListener("visibilitychange",function(){document.hidden?(document.title="≡[。。]≡ 回不去了吗？!",clearTimeout(st)):(document.title="(ฅ>ω<*ฅ) Thank Vue~ "+OriginTitile,st=setTimeout(function(){document.title=OriginTitile},4e3))})</script> -->
+</body>
+</html>

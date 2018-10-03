@@ -1,0 +1,880 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Courier New:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="seaborn," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Sun Zhu Li's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="修改图片尺寸from matplotlib import pyplot as pltplt.figure(figsize=(100, 5))通过以上两行起作用sns.barplot(x=age_survived.index, y=age_survived[‘Survived’] + age_survived[‘Dead’], color=’red’)sns.barplot(x=age_surviv">
+<meta property="og:type" content="article">
+<meta property="og:title" content="seaborn画图">
+<meta property="og:url" content="https://zlsunsuda.github.io/2018/10/03/seaborn/index.html">
+<meta property="og:site_name" content="Sun Zhu Li's Blog">
+<meta property="og:description" content="修改图片尺寸from matplotlib import pyplot as pltplt.figure(figsize=(100, 5))通过以上两行起作用sns.barplot(x=age_survived.index, y=age_survived[‘Survived’] + age_survived[‘Dead’], color=’red’)sns.barplot(x=age_surviv">
+<meta property="og:updated_time" content="2018-10-03T03:01:37.601Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="seaborn画图">
+<meta name="twitter:description" content="修改图片尺寸from matplotlib import pyplot as pltplt.figure(figsize=(100, 5))通过以上两行起作用sns.barplot(x=age_survived.index, y=age_survived[‘Survived’] + age_survived[‘Dead’], color=’red’)sns.barplot(x=age_surviv">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"hide"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: undefined,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="https://zlsunsuda.github.io/2018/10/03/seaborn/"/>
+
+
+<!-- 网页加载条 -->
+<script src="/js/src/pace.min.js"></script>
+  <title> seaborn画图 | Sun Zhu Li's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Sun Zhu Li's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">Hello World</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search fa-lg"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                seaborn画图
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-10-03T10:52:20+08:00" content="2018-10-03">
+              2018-10-03
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/seaborn/" itemprop="url" rel="index">
+                    <span itemprop="name">seaborn</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="修改图片尺寸"><a href="#修改图片尺寸" class="headerlink" title="修改图片尺寸"></a>修改图片尺寸</h2><p>from matplotlib import pyplot as plt<br>plt.figure(figsize=(100, 5))<br>通过以上两行起作用<br>sns.barplot(x=age_survived.index, y=age_survived[‘Survived’] + age_survived[‘Dead’], color=’red’)<br>sns.barplot(x=age_survived.index, y=age_survived[‘Survived’], color=’green’)</p>
+<p>数据探索性分析</p>
+<h2 id="区分boxplot-barplot"><a href="#区分boxplot-barplot" class="headerlink" title="区分boxplot, barplot"></a>区分boxplot, barplot</h2><p>barplot与boxplot画图效果不一致，barplot不能显示较高精度。boxplot可以显示均值范围以及异常值个数。</p>
+<h2 id="数据离散程度以及异常值"><a href="#数据离散程度以及异常值" class="headerlink" title="数据离散程度以及异常值"></a>数据离散程度以及异常值</h2><p>sns.pairplot(iris, hue=’Name’)<br>单个变量离散程度<br>sns.scatterplot(x=train.index, y=train.SibSp)</p>
+<h2 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h2><p>由pandas提供boxplot方法<br>iris.boxplot(by=”Name”, figsize=(12, 6))</p>
+<h2 id="roc-auc"><a href="#roc-auc" class="headerlink" title="roc/auc"></a>roc/auc</h2><p>y_test若不为二分类label，则需要指定pos_label, pos_labelz作为正例，其余class都作为反例<br>fpr, tpr, threshold = roc_curve(y_test, svc.decision_function(X_test)[:, 1], pos_label=1)<br>sns.lineplot(x=fpr, y=tpr)</p>
+<h2 id="混淆矩阵"><a href="#混淆矩阵" class="headerlink" title="混淆矩阵"></a>混淆矩阵</h2><p>sns.heatmap(confusion_matrix(y_test, svc.predict(X_test)), annot=True)</p>
+<h2 id="grid-search查找参数"><a href="#grid-search查找参数" class="headerlink" title="grid search查找参数"></a>grid search查找参数</h2><p>y轴为param_grid中第一个参数，x轴为param_grid中第二个参数，但不能设置xlable, ylabel<br>sns.heatmap(scores, yticklabels=param_grid[‘C’], xticklabels=param_grid[‘gamma’],<br>            annot=True, )</p>
+<h2 id="特征重要性"><a href="#特征重要性" class="headerlink" title="特征重要性"></a>特征重要性</h2><p>设置orient，且交换x, y<br>sns.barplot(x=sorted_feature_importances, y=sorted_feature_names, orient=’h’)<br>sns.barplot(x=sorted_feature_names, y=sorted_feature_importances)</p>
+<h2 id="keras-model-train-history"><a href="#keras-model-train-history" class="headerlink" title="keras model train_history"></a>keras model train_history</h2><p>构建一个DataFrame，x=’epoches’, y=’acc’分别为DataFrame key<br>sns.lineplot(x=’epoches’, y=’acc’, data=train_history_df, markers=True)</p>
+<p>由dict构建一个DataFrame<br>history_dic = train_history.history<br>epochs = np.shape(train_history.history[‘acc’])[0]<br>history_dic[‘epoches’] = range(epochs)</p>
+<h2 id="直方图"><a href="#直方图" class="headerlink" title="直方图"></a>直方图</h2><p>ratings[‘rating’]为pandas中Series结构<br>sns.distplot(ratings[‘rating’])</p>
+<p>matploitlib直方图<br>plt.hist(ratings[‘rating’])</p>
+<h2 id="对离散变量，且取值个数较少情况"><a href="#对离散变量，且取值个数较少情况" class="headerlink" title="对离散变量，且取值个数较少情况"></a>对离散变量，且取值个数较少情况</h2><p>用barplot或者catplot，可以引用hue属性，查看3个变量情况<br>sns.barplot(x=’SibSp’, y=’Survived’, hue=’Sex’, data=train_ready)<br>sns.catplot(x=’SibSp’, y=’Survived’, hue=’Sex’, data=train_ready, kind=’bar’)<br>sns.catplot(x=’SibSp’, y=’Survived’, hue=’Sex’, data=train_ready, kind=’box’)</p>
+<h2 id="对连续变量，且取值个数较多情况（如Age-Fare）"><a href="#对连续变量，且取值个数较多情况（如Age-Fare）" class="headerlink" title="对连续变量，且取值个数较多情况（如Age, Fare）"></a>对连续变量，且取值个数较多情况（如Age, Fare）</h2><p>不能用barplot，否则会由于bar过多而密集</p>
+<p>用distplot，不允许数据中有空值，需要先填充空值<br>sns.distplot(a=train_ready[‘Age’])</p>
+<p>用FacetGrid，允许数据中有空值<br>g = sns.FacetGrid(train_ready, col=’Survived’)<br>g.map(sns.distplot, ‘Age’)</p>
+<h1 id="柱状图叠加效果，计算总量及比率-（查找更简洁方法）"><a href="#柱状图叠加效果，计算总量及比率-（查找更简洁方法）" class="headerlink" title="柱状图叠加效果，计算总量及比率 （查找更简洁方法）"></a>柱状图叠加效果，计算总量及比率 （查找更简洁方法）</h1><p>sns.barplot(x=sex_survived.index, y=sex_survived[‘Survived’]+sex_survived[‘Dead’], color=’red’)<br>sns.barplot(x=sex_survived.index, y=sex_survived[‘Survived’], color=’green’)</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/seaborn/" rel="tag"><i class="fa fa-tag"></i> seaborn</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/03/spark java 实践/" rel="next" title="Spark in Java">
+                <i class="fa fa-chevron-left"></i> Spark in Java
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/10/03/keras实践/" rel="prev" title="Keras实践">
+                Keras实践 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/avatar/avatar.png"
+               alt="Sun Zhu Li" />
+          <p class="site-author-name" itemprop="name">Sun Zhu Li</p>
+          <p class="site-description motion-element" itemprop="description">Stay Hungry,Stay Foolish</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">10</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/zlsunsuda" target="_blank" title="Github">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  Github
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.csdn.net/learn_sunzhuli" title="CSDN" target="_blank">CSDN</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://zlsunsuda.github.io/zlsunsuda" title="个人首页" target="_blank">个人首页</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#修改图片尺寸"><span class="nav-number">1.</span> <span class="nav-text">修改图片尺寸</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#区分boxplot-barplot"><span class="nav-number">2.</span> <span class="nav-text">区分boxplot, barplot</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据离散程度以及异常值"><span class="nav-number">3.</span> <span class="nav-text">数据离散程度以及异常值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据范围"><span class="nav-number">4.</span> <span class="nav-text">数据范围</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#roc-auc"><span class="nav-number">5.</span> <span class="nav-text">roc/auc</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#混淆矩阵"><span class="nav-number">6.</span> <span class="nav-text">混淆矩阵</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#grid-search查找参数"><span class="nav-number">7.</span> <span class="nav-text">grid search查找参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#特征重要性"><span class="nav-number">8.</span> <span class="nav-text">特征重要性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#keras-model-train-history"><span class="nav-number">9.</span> <span class="nav-text">keras model train_history</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#直方图"><span class="nav-number">10.</span> <span class="nav-text">直方图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对离散变量，且取值个数较少情况"><span class="nav-number">11.</span> <span class="nav-text">对离散变量，且取值个数较少情况</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对连续变量，且取值个数较多情况（如Age-Fare）"><span class="nav-number">12.</span> <span class="nav-text">对连续变量，且取值个数较多情况（如Age, Fare）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#柱状图叠加效果，计算总量及比率-（查找更简洁方法）"><span class="nav-number"></span> <span class="nav-text">柱状图叠加效果，计算总量及比率 （查找更简洁方法）</span></a></div>
+            
+          </div>
+        </section>
+      
+      <!-- hack一个虚线出来 -->
+      <section style="border-top:1px dotted #ccc;height:10px;"></section>
+      <!-- weibo show -->
+      <iframe width="100%" height="120" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=120&fansRow=2&ptype=1&speed=0&skin=5&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=5346488237&verifier=d529ff3a&dpc=1"></iframe>
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+
+  
+  
+</div>
+
+
+
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Sun Zhu Li</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io" rel="external nofollow">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next" rel="external nofollow">
+    NexT.Pisces
+  </a>
+</div>
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count" style="color: #e90f92;">全站共 20k 字</span>
+</div>
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+
+  <!-- 按需加载背景 -->
+  <!--  -->
+  <!-- 页面点击小红心 -->
+  <!-- <!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/love.js?v=5.0.1"></script> -->
+  <!-- 页面移动stars -->
+  <!-- <!-- 鼠标移动特效 -->
+<script type="text/javascript" src="/js/src/jquery-stars.js?v=5.0.1"></script>
+<script type="text/javascript">
+jQuery('body').jstars({
+	image_path: '/images',
+	image: 'candy-cane-stars.png',
+	style: 'white',
+	width: 34,
+	height: 34,
+	delay: 700,
+	frequency: 5
+});
+</script> -->
+  <!-- <!-- 页面 title 进入/离开 效果 -->
+<script type="text/javascript">var OriginTitile=document.title,st;document.addEventListener("visibilitychange",function(){document.hidden?(document.title="≡[。。]≡ 回不去了吗？!",clearTimeout(st)):(document.title="(ฅ>ω<*ฅ) Thank Vue~ "+OriginTitile,st=setTimeout(function(){document.title=OriginTitile},4e3))})</script> -->
+</body>
+</html>
