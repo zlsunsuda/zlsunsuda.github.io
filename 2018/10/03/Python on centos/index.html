@@ -86,19 +86,16 @@
 
 
 
-<meta name="description" content="安装依赖库python 2.6.6安装pipyum install -y python-pip或者手动安装pip, setuptools
-python升级python2.6升级到python3.6先确保yum可用，且在root用户下运行 update_to_python3.sh脚本python2.6升级到python2.7，需要安装pip, setuptools。而python3.6已经自带了。（">
+<meta name="description" content="安装依赖库python 2.6.6安装pipyum install -y python-pip或者手动安装pip, setuptools">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python on centos">
 <meta property="og:url" content="https://zlsunsuda.github.io/2018/10/03/Python on centos/index.html">
 <meta property="og:site_name" content="Sun Zhu Li's Blog">
-<meta property="og:description" content="安装依赖库python 2.6.6安装pipyum install -y python-pip或者手动安装pip, setuptools
-python升级python2.6升级到python3.6先确保yum可用，且在root用户下运行 update_to_python3.sh脚本python2.6升级到python2.7，需要安装pip, setuptools。而python3.6已经自带了。（">
-<meta property="og:updated_time" content="2018-10-03T03:00:49.948Z">
+<meta property="og:description" content="安装依赖库python 2.6.6安装pipyum install -y python-pip或者手动安装pip, setuptools">
+<meta property="og:updated_time" content="2018-10-03T08:30:32.399Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python on centos">
-<meta name="twitter:description" content="安装依赖库python 2.6.6安装pipyum install -y python-pip或者手动安装pip, setuptools
-python升级python2.6升级到python3.6先确保yum可用，且在root用户下运行 update_to_python3.sh脚本python2.6升级到python2.7，需要安装pip, setuptools。而python3.6已经自带了。（">
+<meta name="twitter:description" content="安装依赖库python 2.6.6安装pipyum install -y python-pip或者手动安装pip, setuptools">
 
 
 
@@ -344,7 +341,7 @@ python升级python2.6升级到python3.6先确保yum可用，且在root用户下�
       
 
       
-        <h2 id="安装依赖库"><a href="#安装依赖库" class="headerlink" title="安装依赖库"></a>安装依赖库</h2><p>python 2.6.6安装pip<br>yum install -y python-pip<br>或者手动安装pip, setuptools</p>
+        <h2 id="安装依赖库"><a href="#安装依赖库" class="headerlink" title="安装依赖库"></a>安装依赖库</h2><p>python 2.6.6安装pip<br>yum install -y python-pip<br>或者手动安装pip, setuptools<br><a id="more"></a></p>
 <h2 id="python升级"><a href="#python升级" class="headerlink" title="python升级"></a>python升级</h2><p>python2.6升级到python3.6<br>先确保yum可用，且在root用户下运行 update_to_python3.sh脚本<br>python2.6升级到python2.7，需要安装pip, setuptools。而python3.6已经自带了。<br>（1）下载压缩包Python-3.6.1.tgz<br>（2）安装gcc<br>yum install gcc<br>（3）安装zlib<br>yum -y install zlib*<br>（4）修改yum源（手动去执行）<br>vi /usr/bin/yum<br>将#!/usr/bin/python修改为#!/usr/bin/python2.6<br>（5）设置pip源（先需要手动创建目录）（该步骤手动去执行）<br> mkdir ~/.pip<br> vi ~/.pip/pip.conf<br> 通过重定向写入：<br>[global]<br>timeout=60<br>index=<a href="http://10.11.105.11:8081/repository/python/pypi" target="_blank" rel="external">http://10.11.105.11:8081/repository/python/pypi</a><br>index-url=<a href="http://10.11.105.11:8081/repository/python/simple" target="_blank" rel="external">http://10.11.105.11:8081/repository/python/simple</a></p>
 <p>[install]<br>trusted-host=10.11.105.11</p>
 <p>(6) 安装pymongo（该步骤手动去执行，需要先执行步骤五）<br> pip3 install pymongo</p>
@@ -383,16 +380,16 @@ python升级python2.6升级到python3.6先确保yum可用，且在root用户下�
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/10/03/keras实践/" rel="next" title="Keras实践">
-                <i class="fa fa-chevron-left"></i> Keras实践
+              <a href="/2018/10/03/Linux iptables与监控工具/" rel="next" title="Linux iptables与监控工具">
+                <i class="fa fa-chevron-left"></i> Linux iptables与监控工具
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/10/03/Linux iptables与监控工具/" rel="prev" title="Linux iptables与监控工具">
-                Linux iptables与监控工具 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/10/03/Elasticsearch issue/" rel="prev" title="Elasticsearch issue">
+                Elasticsearch issue <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -542,10 +539,6 @@ python升级python2.6升级到python3.6先确保yum可用，且在root用户下�
               
                 <li class="links-of-blogroll-item">
                   <a href="http://blog.csdn.net/learn_sunzhuli" title="CSDN" target="_blank">CSDN</a>
-                </li>
-              
-                <li class="links-of-blogroll-item">
-                  <a href="https://zlsunsuda.github.io/zlsunsuda" title="个人首页" target="_blank">个人首页</a>
                 </li>
               
             </ul>
@@ -868,6 +861,6 @@ jQuery('body').jstars({
 });
 </script> -->
   <!-- <!-- 页面 title 进入/离开 效果 -->
-<script type="text/javascript">var OriginTitile=document.title,st;document.addEventListener("visibilitychange",function(){document.hidden?(document.title="≡[。。]≡ 回不去了吗？!",clearTimeout(st)):(document.title="(ฅ>ω<*ฅ) Thank Vue~ "+OriginTitile,st=setTimeout(function(){document.title=OriginTitile},4e3))})</script> -->
+<script type="text/javascript">var OriginTitile=document.title,st;document.addEventListener("visibilitychange",function(){document.hidden?(document.title=OriginTitile,clearTimeout(st)):(document.title=OriginTitile,st=setTimeout(function(){document.title=OriginTitile},4e3))})</script> -->
 </body>
 </html>

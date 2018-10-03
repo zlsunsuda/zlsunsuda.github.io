@@ -98,7 +98,7 @@
 (2) 修改配置文件        vi /etc/security/limits.conf
 * soft nofile 65535
 * hard no">
-<meta property="og:updated_time" content="2018-10-03T02:55:34.251Z">
+<meta property="og:updated_time" content="2018-10-03T08:31:23.447Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Elasticsearch issue">
 <meta name="twitter:description" content="Elasticsearch 日志中报错“Too many open files”检查系统允许 Elasticsearch 打开的最大文件数。(1) 检查linux文件句柄，默认为1024ulimit -aopen files  (-n) 1024
@@ -356,7 +356,7 @@
 * hard nofile 65535
 root soft nofile 65535
 root hard nofile 65535
-</code></pre><p>(3) reboot Elasticsearch所在虚拟机</p>
+</code></pre><p>(3) reboot Elasticsearch所在虚拟机<br><a id="more"></a></p>
 <h2 id="如果虚拟机内存分配不足，会导致es启动失败"><a href="#如果虚拟机内存分配不足，会导致es启动失败" class="headerlink" title="如果虚拟机内存分配不足，会导致es启动失败"></a>如果虚拟机内存分配不足，会导致es启动失败</h2><p>要求：heap size [9.9gb]，一般分配12G内存</p>
 <pre><code>[2018-01-19 14:58:12,732][WARN ][bootstrap                ] unable to install syscall filter: seccomp unavailable: CONFIG_SECCOMP not compiled into kernel, CONFIG_SECCOMP and CONFIG_SECCOMP_FILTER are needed
 Killed
@@ -403,13 +403,17 @@ Killed
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/10/03/Java 数据绑定/" rel="next" title="Java 数据绑定">
-                <i class="fa fa-chevron-left"></i> Java 数据绑定
+              <a href="/2018/10/03/Python on centos/" rel="next" title="Python on centos">
+                <i class="fa fa-chevron-left"></i> Python on centos
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/10/03/Java 数据绑定/" rel="prev" title="Java 数据绑定">
+                Java 数据绑定 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -558,10 +562,6 @@ Killed
               
                 <li class="links-of-blogroll-item">
                   <a href="http://blog.csdn.net/learn_sunzhuli" title="CSDN" target="_blank">CSDN</a>
-                </li>
-              
-                <li class="links-of-blogroll-item">
-                  <a href="https://zlsunsuda.github.io/zlsunsuda" title="个人首页" target="_blank">个人首页</a>
                 </li>
               
             </ul>
@@ -884,6 +884,6 @@ jQuery('body').jstars({
 });
 </script> -->
   <!-- <!-- 页面 title 进入/离开 效果 -->
-<script type="text/javascript">var OriginTitile=document.title,st;document.addEventListener("visibilitychange",function(){document.hidden?(document.title="≡[。。]≡ 回不去了吗？!",clearTimeout(st)):(document.title="(ฅ>ω<*ฅ) Thank Vue~ "+OriginTitile,st=setTimeout(function(){document.title=OriginTitile},4e3))})</script> -->
+<script type="text/javascript">var OriginTitile=document.title,st;document.addEventListener("visibilitychange",function(){document.hidden?(document.title=OriginTitile,clearTimeout(st)):(document.title=OriginTitile,st=setTimeout(function(){document.title=OriginTitile},4e3))})</script> -->
 </body>
 </html>

@@ -102,7 +102,7 @@ zero = zeros = Zeros
 one = ones = Ones
 constant = Constant
 uniform">
-<meta property="og:updated_time" content="2018-10-03T02:56:44.688Z">
+<meta property="og:updated_time" content="2018-10-03T08:31:02.334Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Keras实践">
 <meta name="twitter:description" content="初始化器的用法初始化定义了设置 Keras 各层权重随机初始值的方法。用来将初始化器传入 Keras 层的参数名取决于具体的层。通常关键字为 kernel_initializer 和 bias_initializer
@@ -366,7 +366,8 @@ normal = random_normal = RandomNormal
 truncated_normal = TruncatedNormal
 identity = Identity
 orthogonal = Orthogonal
-</code></pre><h2 id="正则化器的使用"><a href="#正则化器的使用" class="headerlink" title="正则化器的使用"></a>正则化器的使用</h2><p>正则化器允许在优化过程中对层的参数或层的激活情况进行惩罚。 网络优化的损失函数也包括这些惩罚项。<br>惩罚是以层为对象进行的。具体的 API 因层而异，但 Dense，Conv1D，Conv2D 和 Conv3D 这些层具有统一的 API。<br>正则化器开放 3 个关键字参数：</p>
+</code></pre><a id="more"></a>
+<h2 id="正则化器的使用"><a href="#正则化器的使用" class="headerlink" title="正则化器的使用"></a>正则化器的使用</h2><p>正则化器允许在优化过程中对层的参数或层的激活情况进行惩罚。 网络优化的损失函数也包括这些惩罚项。<br>惩罚是以层为对象进行的。具体的 API 因层而异，但 Dense，Conv1D，Conv2D 和 Conv3D 这些层具有统一的 API。<br>正则化器开放 3 个关键字参数：</p>
 <pre><code>kernel_regularizer: keras.regularizers.Regularizer 的实例
 bias_regularizer: keras.regularizers.Regularizer 的实例
 activity_regularizer: keras.regularizers.Regularizer 的实例
@@ -432,8 +433,8 @@ nadam = Nadam
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/10/03/Python on centos/" rel="prev" title="Python on centos">
-                Python on centos <i class="fa fa-chevron-right"></i>
+              <a href="/2018/10/03/Spark in java 实践/" rel="prev" title="Spark in Java">
+                Spark in Java <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -583,10 +584,6 @@ nadam = Nadam
               
                 <li class="links-of-blogroll-item">
                   <a href="http://blog.csdn.net/learn_sunzhuli" title="CSDN" target="_blank">CSDN</a>
-                </li>
-              
-                <li class="links-of-blogroll-item">
-                  <a href="https://zlsunsuda.github.io/zlsunsuda" title="个人首页" target="_blank">个人首页</a>
                 </li>
               
             </ul>
@@ -909,6 +906,6 @@ jQuery('body').jstars({
 });
 </script> -->
   <!-- <!-- 页面 title 进入/离开 效果 -->
-<script type="text/javascript">var OriginTitile=document.title,st;document.addEventListener("visibilitychange",function(){document.hidden?(document.title="≡[。。]≡ 回不去了吗？!",clearTimeout(st)):(document.title="(ฅ>ω<*ฅ) Thank Vue~ "+OriginTitile,st=setTimeout(function(){document.title=OriginTitile},4e3))})</script> -->
+<script type="text/javascript">var OriginTitile=document.title,st;document.addEventListener("visibilitychange",function(){document.hidden?(document.title=OriginTitile,clearTimeout(st)):(document.title=OriginTitile,st=setTimeout(function(){document.title=OriginTitile},4e3))})</script> -->
 </body>
 </html>

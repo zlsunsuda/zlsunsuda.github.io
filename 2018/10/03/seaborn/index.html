@@ -92,7 +92,7 @@
 <meta property="og:url" content="https://zlsunsuda.github.io/2018/10/03/seaborn/index.html">
 <meta property="og:site_name" content="Sun Zhu Li's Blog">
 <meta property="og:description" content="修改图片尺寸from matplotlib import pyplot as pltplt.figure(figsize=(100, 5))通过以上两行起作用sns.barplot(x=age_survived.index, y=age_survived[‘Survived’] + age_survived[‘Dead’], color=’red’)sns.barplot(x=age_surviv">
-<meta property="og:updated_time" content="2018-10-03T03:01:37.601Z">
+<meta property="og:updated_time" content="2018-10-03T08:30:07.035Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="seaborn画图">
 <meta name="twitter:description" content="修改图片尺寸from matplotlib import pyplot as pltplt.figure(figsize=(100, 5))通过以上两行起作用sns.barplot(x=age_survived.index, y=age_survived[‘Survived’] + age_survived[‘Dead’], color=’red’)sns.barplot(x=age_surviv">
@@ -341,8 +341,8 @@
       
 
       
-        <h2 id="修改图片尺寸"><a href="#修改图片尺寸" class="headerlink" title="修改图片尺寸"></a>修改图片尺寸</h2><p>from matplotlib import pyplot as plt<br>plt.figure(figsize=(100, 5))<br>通过以上两行起作用<br>sns.barplot(x=age_survived.index, y=age_survived[‘Survived’] + age_survived[‘Dead’], color=’red’)<br>sns.barplot(x=age_survived.index, y=age_survived[‘Survived’], color=’green’)</p>
-<p>数据探索性分析</p>
+        <h2 id="修改图片尺寸"><a href="#修改图片尺寸" class="headerlink" title="修改图片尺寸"></a>修改图片尺寸</h2><p>from matplotlib import pyplot as plt<br>plt.figure(figsize=(100, 5))<br>通过以上两行起作用<br>sns.barplot(x=age_survived.index, y=age_survived[‘Survived’] + age_survived[‘Dead’], color=’red’)<br>sns.barplot(x=age_survived.index, y=age_survived[‘Survived’], color=’green’)<br><a id="more"></a></p>
+<p>数据探索性分析：</p>
 <h2 id="区分boxplot-barplot"><a href="#区分boxplot-barplot" class="headerlink" title="区分boxplot, barplot"></a>区分boxplot, barplot</h2><p>barplot与boxplot画图效果不一致，barplot不能显示较高精度。boxplot可以显示均值范围以及异常值个数。</p>
 <h2 id="数据离散程度以及异常值"><a href="#数据离散程度以及异常值" class="headerlink" title="数据离散程度以及异常值"></a>数据离散程度以及异常值</h2><p>sns.pairplot(iris, hue=’Name’)<br>单个变量离散程度<br>sns.scatterplot(x=train.index, y=train.SibSp)</p>
 <h2 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h2><p>由pandas提供boxplot方法<br>iris.boxplot(by=”Name”, figsize=(12, 6))</p>
@@ -390,8 +390,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/10/03/spark java 实践/" rel="next" title="Spark in Java">
-                <i class="fa fa-chevron-left"></i> Spark in Java
+              <a href="/2018/10/03/机器学习算法比较与选型/" rel="next" title="机器学习算法比较与选型">
+                <i class="fa fa-chevron-left"></i> 机器学习算法比较与选型
               </a>
             
           </div>
@@ -549,10 +549,6 @@
               
                 <li class="links-of-blogroll-item">
                   <a href="http://blog.csdn.net/learn_sunzhuli" title="CSDN" target="_blank">CSDN</a>
-                </li>
-              
-                <li class="links-of-blogroll-item">
-                  <a href="https://zlsunsuda.github.io/zlsunsuda" title="个人首页" target="_blank">个人首页</a>
                 </li>
               
             </ul>
@@ -875,6 +871,6 @@ jQuery('body').jstars({
 });
 </script> -->
   <!-- <!-- 页面 title 进入/离开 效果 -->
-<script type="text/javascript">var OriginTitile=document.title,st;document.addEventListener("visibilitychange",function(){document.hidden?(document.title="≡[。。]≡ 回不去了吗？!",clearTimeout(st)):(document.title="(ฅ>ω<*ฅ) Thank Vue~ "+OriginTitile,st=setTimeout(function(){document.title=OriginTitile},4e3))})</script> -->
+<script type="text/javascript">var OriginTitile=document.title,st;document.addEventListener("visibilitychange",function(){document.hidden?(document.title=OriginTitile,clearTimeout(st)):(document.title=OriginTitile,st=setTimeout(function(){document.title=OriginTitile},4e3))})</script> -->
 </body>
 </html>

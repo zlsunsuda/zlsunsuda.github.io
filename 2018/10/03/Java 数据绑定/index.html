@@ -92,7 +92,7 @@
 <meta property="og:url" content="https://zlsunsuda.github.io/2018/10/03/Java 数据绑定/index.html">
 <meta property="og:site_name" content="Sun Zhu Li's Blog">
 <meta property="og:description" content="数据绑定问题(1) 方法首先进入getParamBean方法，然后进入index方法。(2) 如果进入getParamBean方法，user，logType为中文（注意在html中提交时name, value取值），则在getParamBean中绑定AuditLogSearchBean在index方法中不生效，会发生二次绑定。@ModelAttributepublic AuditLogSearch">
-<meta property="og:updated_time" content="2018-10-03T02:56:02.567Z">
+<meta property="og:updated_time" content="2018-10-03T08:31:14.198Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java 数据绑定">
 <meta name="twitter:description" content="数据绑定问题(1) 方法首先进入getParamBean方法，然后进入index方法。(2) 如果进入getParamBean方法，user，logType为中文（注意在html中提交时name, value取值），则在getParamBean中绑定AuditLogSearchBean在index方法中不生效，会发生二次绑定。@ModelAttributepublic AuditLogSearch">
@@ -342,7 +342,7 @@
 
       
         <h2 id="数据绑定问题"><a href="#数据绑定问题" class="headerlink" title="数据绑定问题"></a>数据绑定问题</h2><p>(1) 方法首先进入getParamBean方法，然后进入index方法。<br>(2) 如果进入getParamBean方法，user，logType为中文（注意在html中提交时name, value取值），则在getParamBean中绑定AuditLogSearchBean在index方法中不生效，会发生二次绑定。<br>@ModelAttribute<br>public AuditLogSearchBean getParamBean(String mStartDate, String mEndDate, String searchText, String user,<br>        String logType) {<br>    // TODO<br>}</p>
-<p>@RequestMapping(value = { “”, “/list”, “/index” })<br>public String index(AuditLogSearchBean searchParamBean, HttpServletRequest request, Model model) {<br>    // TODO<br>}</p>
+<p>@RequestMapping(value = { “”, “/list”, “/index” })<br>public String index(AuditLogSearchBean searchParamBean, HttpServletRequest request, Model model) {<br>    // TODO<br>}<br><a id="more"></a></p>
 <h2 id="在-ModelAttribute中绑定的数据可能会被覆盖"><a href="#在-ModelAttribute中绑定的数据可能会被覆盖" class="headerlink" title="在@ModelAttribute中绑定的数据可能会被覆盖"></a>在@ModelAttribute中绑定的数据可能会被覆盖</h2><p>@ModelAttribute<br>public LogDataSource getLogDataSource(@RequestParam(required = false) String id,@RequestParam(required = false) String[] appName, @RequestParam(required = false) String[] appType,@RequestParam(required = false) String[] appPath) {<br>    // TODO<br>}</p>
 <h2 id="aop"><a href="#aop" class="headerlink" title="aop"></a>aop</h2><p>AspectJ AOP<br>Spring AOP<br>JDK proxy和CGlib</p>
 <p>@Before是在所拦截方法执行之前执行一段逻辑。<br>@After 是在所拦截方法执行之后执行一段逻辑。<br>@Around是可以同时在所拦截方法的前后执行一段逻辑。</p>
@@ -388,17 +388,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/10/03/Linux iptables与监控工具/" rel="next" title="Linux iptables与监控工具">
-                <i class="fa fa-chevron-left"></i> Linux iptables与监控工具
+              <a href="/2018/10/03/Elasticsearch issue/" rel="next" title="Elasticsearch issue">
+                <i class="fa fa-chevron-left"></i> Elasticsearch issue
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/10/03/Elasticsearch issue/" rel="prev" title="Elasticsearch issue">
-                Elasticsearch issue <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -547,10 +543,6 @@
               
                 <li class="links-of-blogroll-item">
                   <a href="http://blog.csdn.net/learn_sunzhuli" title="CSDN" target="_blank">CSDN</a>
-                </li>
-              
-                <li class="links-of-blogroll-item">
-                  <a href="https://zlsunsuda.github.io/zlsunsuda" title="个人首页" target="_blank">个人首页</a>
                 </li>
               
             </ul>
@@ -873,6 +865,6 @@ jQuery('body').jstars({
 });
 </script> -->
   <!-- <!-- 页面 title 进入/离开 效果 -->
-<script type="text/javascript">var OriginTitile=document.title,st;document.addEventListener("visibilitychange",function(){document.hidden?(document.title="≡[。。]≡ 回不去了吗？!",clearTimeout(st)):(document.title="(ฅ>ω<*ฅ) Thank Vue~ "+OriginTitile,st=setTimeout(function(){document.title=OriginTitile},4e3))})</script> -->
+<script type="text/javascript">var OriginTitile=document.title,st;document.addEventListener("visibilitychange",function(){document.hidden?(document.title=OriginTitile,clearTimeout(st)):(document.title=OriginTitile,st=setTimeout(function(){document.title=OriginTitile},4e3))})</script> -->
 </body>
 </html>

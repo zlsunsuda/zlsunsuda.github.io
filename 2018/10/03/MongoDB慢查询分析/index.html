@@ -86,19 +86,16 @@
 
 
 
-<meta name="description" content="定义MongoDB慢查询db.setProfilingLevel(1)db.setProfilingLevel(1,1000)db.getProfilingStatus()
-查看记录下来的耗时语句db.system.profile.find()其中，”ts” : ISODate(“2018-03-28T01:53:10.779Z”)为执行命令时间：db.system.profile.find().">
+<meta name="description" content="定义MongoDB慢查询db.setProfilingLevel(1)db.setProfilingLevel(1,1000)db.getProfilingStatus()">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MongoDB慢查询分析">
 <meta property="og:url" content="https://zlsunsuda.github.io/2018/10/03/MongoDB慢查询分析/index.html">
 <meta property="og:site_name" content="Sun Zhu Li's Blog">
-<meta property="og:description" content="定义MongoDB慢查询db.setProfilingLevel(1)db.setProfilingLevel(1,1000)db.getProfilingStatus()
-查看记录下来的耗时语句db.system.profile.find()其中，”ts” : ISODate(“2018-03-28T01:53:10.779Z”)为执行命令时间：db.system.profile.find().">
-<meta property="og:updated_time" content="2018-10-03T02:13:48.521Z">
+<meta property="og:description" content="定义MongoDB慢查询db.setProfilingLevel(1)db.setProfilingLevel(1,1000)db.getProfilingStatus()">
+<meta property="og:updated_time" content="2018-10-03T08:30:41.681Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MongoDB慢查询分析">
-<meta name="twitter:description" content="定义MongoDB慢查询db.setProfilingLevel(1)db.setProfilingLevel(1,1000)db.getProfilingStatus()
-查看记录下来的耗时语句db.system.profile.find()其中，”ts” : ISODate(“2018-03-28T01:53:10.779Z”)为执行命令时间：db.system.profile.find().">
+<meta name="twitter:description" content="定义MongoDB慢查询db.setProfilingLevel(1)db.setProfilingLevel(1,1000)db.getProfilingStatus()">
 
 
 
@@ -344,7 +341,7 @@
       
 
       
-        <h2 id="定义MongoDB慢查询"><a href="#定义MongoDB慢查询" class="headerlink" title="定义MongoDB慢查询"></a>定义MongoDB慢查询</h2><p>db.setProfilingLevel(1)<br>db.setProfilingLevel(1,1000)<br>db.getProfilingStatus()</p>
+        <h2 id="定义MongoDB慢查询"><a href="#定义MongoDB慢查询" class="headerlink" title="定义MongoDB慢查询"></a>定义MongoDB慢查询</h2><p>db.setProfilingLevel(1)<br>db.setProfilingLevel(1,1000)<br>db.getProfilingStatus()<br><a id="more"></a></p>
 <h2 id="查看记录下来的耗时语句"><a href="#查看记录下来的耗时语句" class="headerlink" title="查看记录下来的耗时语句"></a>查看记录下来的耗时语句</h2><p>db.system.profile.find()<br>其中，”ts” : ISODate(“2018-03-28T01:53:10.779Z”)为执行命令时间：<br>db.system.profile.find().sort({ts:-1})</p>
 <h2 id="通过explain-查看index使用情况"><a href="#通过explain-查看index使用情况" class="headerlink" title="通过explain()查看index使用情况"></a>通过explain()查看index使用情况</h2><p>db.getCollection(‘collection_name’).find({“insertTime”:{“$gte”:ISODate(“2018-02-06T05:47:00.267Z”), “$lte”:ISODate(“2018-03-06T05:47:00.267Z”)}}).explain()</p>
 <p>删除histroy profile，先后执行如下两条命令：<br>db.setProfilingLevel(0)<br>db.system.profile.drop()<br>从浏览器查看后台响应时间</p>
@@ -539,10 +536,6 @@
               
                 <li class="links-of-blogroll-item">
                   <a href="http://blog.csdn.net/learn_sunzhuli" title="CSDN" target="_blank">CSDN</a>
-                </li>
-              
-                <li class="links-of-blogroll-item">
-                  <a href="https://zlsunsuda.github.io/zlsunsuda" title="个人首页" target="_blank">个人首页</a>
                 </li>
               
             </ul>
@@ -865,6 +858,6 @@ jQuery('body').jstars({
 });
 </script> -->
   <!-- <!-- 页面 title 进入/离开 效果 -->
-<script type="text/javascript">var OriginTitile=document.title,st;document.addEventListener("visibilitychange",function(){document.hidden?(document.title="≡[。。]≡ 回不去了吗？!",clearTimeout(st)):(document.title="(ฅ>ω<*ฅ) Thank Vue~ "+OriginTitile,st=setTimeout(function(){document.title=OriginTitile},4e3))})</script> -->
+<script type="text/javascript">var OriginTitile=document.title,st;document.addEventListener("visibilitychange",function(){document.hidden?(document.title=OriginTitile,clearTimeout(st)):(document.title=OriginTitile,st=setTimeout(function(){document.title=OriginTitile},4e3))})</script> -->
 </body>
 </html>

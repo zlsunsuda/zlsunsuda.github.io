@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Blog, Git, Python, Java, C++, 网络安全, 图像处理, 数据挖掘, 机器学习, 深度学习, Linux Shell, Powershell, NoSQL" />
+  <meta name="keywords" content="Java,Spark," />
 
 
 
@@ -86,16 +86,16 @@
 
 
 
-<meta name="description" content="日志">
-<meta property="og:type" content="website">
-<meta property="og:title" content="weblog">
-<meta property="og:url" content="https://zlsunsuda.github.io/weblog/index.html">
+<meta name="description" content="数据结构SparkSessionSparkConfSparkContextJavaSparkContextJavaStreamingContextJavaRDD">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spark in Java">
+<meta property="og:url" content="https://zlsunsuda.github.io/2018/10/03/Spark in java 实践/index.html">
 <meta property="og:site_name" content="Sun Zhu Li's Blog">
-<meta property="og:description" content="日志">
-<meta property="og:updated_time" content="2018-10-03T01:27:47.223Z">
+<meta property="og:description" content="数据结构SparkSessionSparkConfSparkContextJavaSparkContextJavaStreamingContextJavaRDD">
+<meta property="og:updated_time" content="2018-10-03T08:29:57.536Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="weblog">
-<meta name="twitter:description" content="日志">
+<meta name="twitter:title" content="Spark in Java">
+<meta name="twitter:description" content="数据结构SparkSessionSparkConfSparkContextJavaSparkContextJavaStreamingContextJavaRDD">
 
 
 
@@ -116,18 +116,12 @@
 
 
 
-  <link rel="canonical" href="https://zlsunsuda.github.io/weblog/"/>
+  <link rel="canonical" href="https://zlsunsuda.github.io/2018/10/03/Spark in java 实践/"/>
 
 
 <!-- 网页加载条 -->
 <script src="/js/src/pace.min.js"></script>
-  <title>
-  
-
-  
-    weblog | Sun Zhu Li's Blog
-  
-</title>
+  <title> Spark in Java | Sun Zhu Li's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -148,7 +142,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -271,9 +265,170 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
     
-      <h3 id="日志"><a href="#日志" class="headerlink" title="日志"></a>日志</h3>
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Spark in Java
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-10-03T10:52:20+08:00" content="2018-10-03">
+              2018-10-03
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Spark/" itemprop="url" rel="index">
+                    <span itemprop="name">Spark</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
     
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h2><p>SparkSession<br>SparkConf<br>SparkContext<br>JavaSparkContext<br>JavaStreamingContext<br>JavaRDD<tuple2<object, object="">&gt;<br>JavaPairRDD<tuple2<integer, integer="">, Double&gt;，有collectAsMap()方法<br>JavaRDD<tuple2<double, double="">&gt;<br><a id="more"></a></tuple2<double,></tuple2<integer,></tuple2<object,></p>
+<h2 id="数据结构转换"><a href="#数据结构转换" class="headerlink" title="数据结构转换"></a>数据结构转换</h2><p>读取字符串<br>JavaRDD<string> stringItem = context.textFile(path);</string></p>
+<p>将字符串进行拆分，map()方法返回JavaRDD数据结构<br>JavaRDD<string[]> splitedItem = stringItem.map(s -&gt; {<br>// | 为正则表达式中特殊字符，表示或操作，则需要转义<br>String[] sarray = s.split(“\|”);<br>return sarray;<br>});</string[]></p>
+<p>将拆分结果转成key/value，mapToPair()方法返回JavaPairRDD数据结构<br>Tuple2&lt;&gt;可以自动推断数据类型<br>JavaPairRDD<float, string=""> movieRDD = splitedItem.mapToPair(line -&gt;<br>        new Tuple2&lt;&gt;(Float.parseFloat(line[0]), line[1]));</float,></p>
+<h2 id="数据转换异常"><a href="#数据转换异常" class="headerlink" title="数据转换异常:"></a>数据转换异常:</h2><p>step 1:<br>JavaRDD<tuple2<float, string="">&gt; movieRDD = splitedItem.mapToPair(line -&gt;<br>        new Tuple2&lt;&gt;(Float.parseFloat(line[0]), line[1]));<br>step 2: 将JavaRDD通过JavaPairRDD.fromJavaRDD()方法转成JavaPairRDD，然后调用collectAsMap()，则抛出类型转换异常。</tuple2<float,></p>
+<h2 id="ML-Pipeline"><a href="#ML-Pipeline" class="headerlink" title="ML Pipeline"></a>ML Pipeline</h2><h3 id="用户自定义函数"><a href="#用户自定义函数" class="headerlink" title="用户自定义函数"></a>用户自定义函数</h3><p>// 通过用户自定义函数解决数据异常值问题<br>sparkSession.udf().register(“changeDataType”, s -&gt; s.equals(“?”) ? “0” : s, DataTypes.StringType);<br>// register函数原型如下<br>public void register(String name, UDF1&lt;?, ?&gt; f, DataType returnType) {}</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag"><i class="fa fa-tag"></i> Java</a>
+          
+            <a href="/tags/Spark/" rel="tag"><i class="fa fa-tag"></i> Spark</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/03/keras实践/" rel="next" title="Keras实践">
+                <i class="fa fa-chevron-left"></i> Keras实践
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/10/03/Linux iptables与监控工具/" rel="prev" title="Linux iptables与监控工具">
+                Linux iptables与监控工具 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
   </div>
 
 
@@ -300,8 +455,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/avatar/avatar.png"
@@ -377,15 +541,22 @@
                   <a href="http://blog.csdn.net/learn_sunzhuli" title="CSDN" target="_blank">CSDN</a>
                 </li>
               
-                <li class="links-of-blogroll-item">
-                  <a href="https://zlsunsuda.github.io/zlsunsuda" title="个人首页" target="_blank">个人首页</a>
-                </li>
-              
             </ul>
           </div>
         
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据结构"><span class="nav-number">1.</span> <span class="nav-text">数据结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据结构转换"><span class="nav-number">2.</span> <span class="nav-text">数据结构转换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据转换异常"><span class="nav-number">3.</span> <span class="nav-text">数据转换异常:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ML-Pipeline"><span class="nav-number">4.</span> <span class="nav-text">ML Pipeline</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#用户自定义函数"><span class="nav-number">4.1.</span> <span class="nav-text">用户自定义函数</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
       
       <!-- hack一个虚线出来 -->
       <section style="border-top:1px dotted #ccc;height:10px;"></section>
@@ -508,6 +679,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 
@@ -686,6 +861,6 @@ jQuery('body').jstars({
 });
 </script> -->
   <!-- <!-- 页面 title 进入/离开 效果 -->
-<script type="text/javascript">var OriginTitile=document.title,st;document.addEventListener("visibilitychange",function(){document.hidden?(document.title="≡[。。]≡ 回不去了吗？!",clearTimeout(st)):(document.title="(ฅ>ω<*ฅ) Thank Vue~ "+OriginTitile,st=setTimeout(function(){document.title=OriginTitile},4e3))})</script> -->
+<script type="text/javascript">var OriginTitile=document.title,st;document.addEventListener("visibilitychange",function(){document.hidden?(document.title=OriginTitile,clearTimeout(st)):(document.title=OriginTitile,st=setTimeout(function(){document.title=OriginTitile},4e3))})</script> -->
 </body>
 </html>

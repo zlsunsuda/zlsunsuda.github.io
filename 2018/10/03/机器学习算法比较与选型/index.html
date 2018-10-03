@@ -86,22 +86,16 @@
 
 
 
-<meta name="description" content="概念均方差 MSE mean square error平均绝对差 MAE mean absolute error交叉损失熵 cross entropy
-独热编码one-hotpandas，默认对所有字符串类型进行独热编码one_hot_df = pd.get_dummies(data=df, columns=[‘embarked’])
-kerasfrom tensorflow.python.ker">
+<meta name="description" content="概念均方差 MSE mean square error平均绝对差 MAE mean absolute error交叉损失熵 cross entropy">
 <meta property="og:type" content="article">
 <meta property="og:title" content="机器学习算法比较与选型">
 <meta property="og:url" content="https://zlsunsuda.github.io/2018/10/03/机器学习算法比较与选型/index.html">
 <meta property="og:site_name" content="Sun Zhu Li's Blog">
-<meta property="og:description" content="概念均方差 MSE mean square error平均绝对差 MAE mean absolute error交叉损失熵 cross entropy
-独热编码one-hotpandas，默认对所有字符串类型进行独热编码one_hot_df = pd.get_dummies(data=df, columns=[‘embarked’])
-kerasfrom tensorflow.python.ker">
-<meta property="og:updated_time" content="2018-10-03T03:04:16.338Z">
+<meta property="og:description" content="概念均方差 MSE mean square error平均绝对差 MAE mean absolute error交叉损失熵 cross entropy">
+<meta property="og:updated_time" content="2018-10-03T13:45:04.697Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="机器学习算法比较与选型">
-<meta name="twitter:description" content="概念均方差 MSE mean square error平均绝对差 MAE mean absolute error交叉损失熵 cross entropy
-独热编码one-hotpandas，默认对所有字符串类型进行独热编码one_hot_df = pd.get_dummies(data=df, columns=[‘embarked’])
-kerasfrom tensorflow.python.ker">
+<meta name="twitter:description" content="概念均方差 MSE mean square error平均绝对差 MAE mean absolute error交叉损失熵 cross entropy">
 
 
 
@@ -347,11 +341,11 @@ kerasfrom tensorflow.python.ker">
       
 
       
-        <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>均方差 MSE mean square error<br>平均绝对差 MAE mean absolute error<br>交叉损失熵 cross entropy</p>
+        <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>均方差 MSE mean square error<br>平均绝对差 MAE mean absolute error<br>交叉损失熵 cross entropy<br><a id="more"></a></p>
 <h2 id="独热编码one-hot"><a href="#独热编码one-hot" class="headerlink" title="独热编码one-hot"></a>独热编码one-hot</h2><p>pandas，默认对所有字符串类型进行独热编码<br>one_hot_df = pd.get_dummies(data=df, columns=[‘embarked’])</p>
-<p>keras<br>from tensorflow.python.keras.utils import np_utils<br>传入一个list，如y_train=[5 0]。<br>to_categorical将label变成one_hot。如果label为字符串，需要先通过map进行映射。<br>y_train_onehot = np_utils.to_categorical(y_train)</p>
+<h2 id="keras"><a href="#keras" class="headerlink" title="keras"></a>keras</h2><p>from tensorflow.python.keras.utils import np_utils<br>传入一个list，如y_train=[5 0]。<br>to_categorical将label变成one_hot。如果label为字符串，需要先通过map进行映射。<br>y_train_onehot = np_utils.to_categorical(y_train)</p>
 <p>Tokenizer中已经封装了one_hot<br>from tensorflow.python.keras.preprocessing.text import Tokenizer<br>token = Tokenizer(num_words=2000)<br>token.fit_on_texts(X_train)<br>text_seq = token.texts_to_sequences(text)</p>
-<p>sklearn<br>如果将一个特征进行独热编码如何做？<br>[[1], [2], [3]]为3个样本，每个样本有1个特征</p>
+<h2 id="sklearn"><a href="#sklearn" class="headerlink" title="sklearn"></a>sklearn</h2><p>如果将一个特征进行独热编码如何做？<br>[[1], [2], [3]]为3个样本，每个样本有1个特征</p>
 <pre><code>from sklearn.preprocessing import OneHotEncoder
 
 enc = OneHotEncoder()
@@ -442,8 +436,8 @@ output: 需要对结果toarray()操作，否则结果看不懂
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/10/03/spark java 实践/" rel="prev" title="Spark in Java">
-                Spark in Java <i class="fa fa-chevron-right"></i>
+              <a href="/2018/10/03/seaborn/" rel="prev" title="seaborn画图">
+                seaborn画图 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -595,10 +589,6 @@ output: 需要对结果toarray()操作，否则结果看不懂
                   <a href="http://blog.csdn.net/learn_sunzhuli" title="CSDN" target="_blank">CSDN</a>
                 </li>
               
-                <li class="links-of-blogroll-item">
-                  <a href="https://zlsunsuda.github.io/zlsunsuda" title="个人首页" target="_blank">个人首页</a>
-                </li>
-              
             </ul>
           </div>
         
@@ -611,7 +601,7 @@ output: 需要对结果toarray()操作，否则结果看不懂
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概念"><span class="nav-number">1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#独热编码one-hot"><span class="nav-number">2.</span> <span class="nav-text">独热编码one-hot</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#有监督学习算法比较"><span class="nav-number">3.</span> <span class="nav-text">有监督学习算法比较</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分类器的不确定度估计"><span class="nav-number">4.</span> <span class="nav-text">分类器的不确定度估计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#无监督学习算法比较"><span class="nav-number">5.</span> <span class="nav-text">无监督学习算法比较</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据预处理"><span class="nav-number">6.</span> <span class="nav-text">数据预处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#特征工程"><span class="nav-number">7.</span> <span class="nav-text">特征工程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模型验证"><span class="nav-number">8.</span> <span class="nav-text">模型验证</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模型调参"><span class="nav-number">9.</span> <span class="nav-text">模型调参</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#评估模型"><span class="nav-number">10.</span> <span class="nav-text">评估模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#评估分类模型"><span class="nav-number">10.1.</span> <span class="nav-text">评估分类模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#评估回归模型"><span class="nav-number">10.2.</span> <span class="nav-text">评估回归模型</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概念"><span class="nav-number">1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#独热编码one-hot"><span class="nav-number">2.</span> <span class="nav-text">独热编码one-hot</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#keras"><span class="nav-number">3.</span> <span class="nav-text">keras</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sklearn"><span class="nav-number">4.</span> <span class="nav-text">sklearn</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#有监督学习算法比较"><span class="nav-number">5.</span> <span class="nav-text">有监督学习算法比较</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分类器的不确定度估计"><span class="nav-number">6.</span> <span class="nav-text">分类器的不确定度估计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#无监督学习算法比较"><span class="nav-number">7.</span> <span class="nav-text">无监督学习算法比较</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据预处理"><span class="nav-number">8.</span> <span class="nav-text">数据预处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#特征工程"><span class="nav-number">9.</span> <span class="nav-text">特征工程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模型验证"><span class="nav-number">10.</span> <span class="nav-text">模型验证</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模型调参"><span class="nav-number">11.</span> <span class="nav-text">模型调参</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#评估模型"><span class="nav-number">12.</span> <span class="nav-text">评估模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#评估分类模型"><span class="nav-number">12.1.</span> <span class="nav-text">评估分类模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#评估回归模型"><span class="nav-number">12.2.</span> <span class="nav-text">评估回归模型</span></a></li></ol></li></ol></div>
             
           </div>
         </section>
@@ -919,6 +909,6 @@ jQuery('body').jstars({
 });
 </script> -->
   <!-- <!-- 页面 title 进入/离开 效果 -->
-<script type="text/javascript">var OriginTitile=document.title,st;document.addEventListener("visibilitychange",function(){document.hidden?(document.title="≡[。。]≡ 回不去了吗？!",clearTimeout(st)):(document.title="(ฅ>ω<*ฅ) Thank Vue~ "+OriginTitile,st=setTimeout(function(){document.title=OriginTitile},4e3))})</script> -->
+<script type="text/javascript">var OriginTitile=document.title,st;document.addEventListener("visibilitychange",function(){document.hidden?(document.title=OriginTitile,clearTimeout(st)):(document.title=OriginTitile,st=setTimeout(function(){document.title=OriginTitile},4e3))})</script> -->
 </body>
 </html>
